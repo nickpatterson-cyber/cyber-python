@@ -1,7 +1,7 @@
 # This script uses the psutil.process_iter() function to iterate through all running processes on a windows system.
 # It will analyse the processes that are running under the svchost.exe process, and print it out at the end.
 # This script is for Windows only and the as.dict method only works in Python 5.4.0
-# v1.0 Dr. Nick Patterson
+# V1.0 NP
 
 import psutil
 
