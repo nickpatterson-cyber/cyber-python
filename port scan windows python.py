@@ -1,5 +1,8 @@
-#python script to scan for common open ports in Windows
-#this script will only check if the ports are open, not if they are being used by a specific #service or application.
+# A little python script to scan for common open ports in Windows systems
+# This script will only check if the ports are open, not if they are being used by a specific service or application.
+# I find this useful to just check if common ports are open on a Windows system, just to gauge your current environment.
+# This can be easily modified to include more ports - just edit the common_ports variable!
+# V1.0 NP
 
 import socket
 
