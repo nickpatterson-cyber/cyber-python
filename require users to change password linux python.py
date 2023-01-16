@@ -1,12 +1,11 @@
-"""
-This script will execute shell command chage -d 0 $(awk -F: '{print $1}' /etc/passwd) using subprocess.run().
-This command will change the password aging information for all users on the system, specifically it will set the number of days since January 1st, 1970 that the user's password was last changed to 0.
-This will trigger the system to prompt the user to change their password the next time they try to login.
+# This script is if you suspect your passwd/shadow file have been compromised and its time to reset everyones passwords on the system!
+# This script will use the command - chage. What is chage? description below:
+# "One of the helpful tools in Linux is the “chage” command. From its name, the “chage” command is derived from the words “Change Age”, which is used to modify the information such as duration when to change password, make account status active or inactive, sets expiry date of the account, and sets a reminder to change the password through an alarm before user’s account will be inactive." - source: https://linuxhint.com/use-linux-chage-command/
+# chage is used here to change the password aging info of all users on a linux system.
+# It sets the number of days since January 1st, 1970 that the users password was last changed to a factor of 0. Ultimately forcing them to change it when they next login.
+# Warning: it will do it for the root account also - so be careful using this
+# V1.0 NP
 
-It is worth noting that this script will change the password aging information for all users on the system, including the root user. It is also worth noting that the users will be prompted to change the password on their next login.
-
-This script should be run with caution, as it could cause issues if the user is not able to change their password. It is also recommended to notify all the users before running this script.
-"""
 import subprocess
 
 def change_password():
