@@ -1,0 +1,19 @@
+# this is a rudimentary python script which can check to see if there is POTENTIALLY a hacker on your linux system
+# exporting large amounts of data (data theft)
+# v1.0 NP
+
+import os
+
+# you can set this to whatever you want in bytes - I used 100mb - depends on your system
+threshold = 100000000
+
+# what network interfaces do you have ?
+interfaces = os.popen("ifconfig").read().split()
+
+# for loop to skip through all those network interfaces to see which are pumping data
+for interface in interfaces:
+# we want to convert to grab the 6th element (which is data transfer in bytes)
+# we need to convert it to int so we can compare the bytes to our threshold (and if its greater than > show a message)
+    if int(os.popen(f"ifconfig {interface} | grep 'TX packets'").read().split()[-6]) > threshold: 
+        print(f"Unusually high data transfer on {interface}") 
+     
