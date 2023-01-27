@@ -1,0 +1,17 @@
+# here is a very simple python script which will check a LINUX operating system for
+# signs of ransomware. It is by no means a ground breaking solution.
+# it will look for common extensions used by ransomware, including ".crypt" and ".enc", 
+# as well as files that contain certain ransom note names, such as "_HELP_instructions" which can be common with BadRabbit variants in the past.
+# v1.0 NP
+
+import os
+
+def check_linux_ransomware():
+    search_command = "find / -name '*.crypt' -o -name '*.enc' -o -name '_HELP_instructions*'"
+    result = os.popen(search_command).read()
+    if result:
+        print("Signs of Ransomware Found in your System!")
+    else:
+        print("No Signs of Ransomware Found.")
+
+check_linux_ransomware()
