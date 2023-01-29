@@ -7,11 +7,19 @@
 import os
 
 def check_linux_ransomware():
-    search_command = "find / -name '*.crypt' -o -name '*.enc' -o -name '_HELP_instructions*'"
-    result = os.popen(search_command).read()
-    if result:
-        print("Signs of Ransomware Found in your System!")
+
+# popen allows you to run shell commands as if they were executed in a terminal and returns a string
+# here we run the command find to look for certain file extensions which are typical of ransomware
+
+    files = os.popen("find / -name '.crypt' -o -name '.enc' -o -name '_HELP_instructions*'").read()
+    
+    # simple if statement to let you know the result
+    if files:
+        print("Possible ransomware detected.")
     else:
-        print("No Signs of Ransomware Found.")
+        print("No ransomware detected.")
 
 check_linux_ransomware()
+
+
+
